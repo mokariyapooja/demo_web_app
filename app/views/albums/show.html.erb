@@ -1,0 +1,12 @@
+<h1>
+    <p>
+      <b>Name:</b>
+      <%=h @album.name %><br />
+       <b>Privacy:</b>
+          <%=h @album.privacy %><br />
+          <% @album.photos.each do |photo| %>
+            <%= image_tag photo.data.url(:small) %>
+          <% end %>
+    </p>
+  <%= link_to 'Back', index_path %>
+</h1>  

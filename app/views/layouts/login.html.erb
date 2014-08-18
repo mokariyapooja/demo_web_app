@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    
+    <%= stylesheet_link_tag    'login', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'login', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    
+      <title>Web Application</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <meta name="description" content="Expand, contract, animate forms with jQuery wihtout leaving the page" />
+      <meta name="keywords" content="expand, form, css3, jquery, animate, width, height, adapt, unobtrusive javascript"/>
+ 
+  <script type="assets/javascripts/login_javascript">
+    Cufon.replace('h1',{ textShadow: '1px 1px #fff'});
+    Cufon.replace('h2',{ textShadow: '1px 1px #fff'});
+    Cufon.replace('h3',{ textShadow: '1px 1px #000'});
+    Cufon.replace('.back');
+  </script>
+  </head>
+  <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    
+      <div class="wrapper">
+        <h1>Web Application</h1>
+        <div class="content">
+          <div id="form_wrapper" class="form_wrapper">
+
+            <%= yield %>
+        
+         </div>
+        </div>
+      </div>
+  </body>
+</html>

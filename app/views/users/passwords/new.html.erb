@@ -1,0 +1,15 @@
+<%= form_for(resource, :html => {:class => "register active"}, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <h3>Forgot Password</h3>
+    <div>
+      <label>Username or Email:</label>
+        <%= f.text_field :email %>
+        <span class="error">This is an error</span>
+    </div>
+    <div class="bottom">
+      <%= f.submit "Reset password" %>
+      <%= link_to "Suddenly remebered? Sign in here", new_user_session_path %>
+      <%= link_to "You don't have an account? Sign up now",new_user_registration_path %>
+    <div class="clear"></div>
+  </div>
+<% end %>
+        

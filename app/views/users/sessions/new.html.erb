@@ -1,0 +1,33 @@
+<%= form_for(resource, :html => {:class => "register active"}, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+            <h3>Sing in</h3>
+            <div class="column">
+              <div>
+                <label>Email:</label>
+                <%= f.text_field :email %>
+                <span class="error">This is an error</span>
+              </div>
+              
+              <div>
+                <label>Password: <%= link_to "Forgot your password?", new_password_path(resource_name) %> </label>
+                <%= f.password_field :password %>
+                <span class="error">This is an error</span>
+              </div>
+            </div>
+
+            <div class="bottom">
+              <div class="remember">
+                <%= f.check_box :remember_me %>
+                <span>Remember Me</span>
+              </div>
+              
+             <!--  <input type="hidden" name="after_sign_in_page" value="<%=@after_sign_in_page%>"> -->
+              <%= f.submit "Sign in" %>
+            <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+             <%= link_to "You don't have an account? Sign up now",new_user_registration_path %>
+               <!-- <a href="#" rel="login" class="linkform">You have an account already? Log in here</a>
+               -->
+              <div class="clear"></div>
+            </div>
+          <% end %>
+

@@ -1,0 +1,12 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+
+    <center><h1>New album</h1></center>
+      <%= render 'albums/form'%>
+    <h1>  <%= link_to 'Back', index_path %> </h1>
+  </head>
+</html>
+ 

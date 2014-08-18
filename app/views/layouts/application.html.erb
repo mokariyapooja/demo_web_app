@@ -1,0 +1,54 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Web Application</title>
+  <meta name="keywords" content="mini social, free download, website templates, CSS, HTML" />
+  <meta name="description" content="Mini Social is a free website template from templatemo.com"/>
+</head>
+  <body>
+      <div id="slider">
+        <div id="templatemo_sidebar">
+          <div id="templatemo_header">
+            <a href="http://www.templatemo.com" target="_parent"><img src="/assets/templatemo_logo.png" alt="Mini Social" /></a>
+          </div> 
+          <%= render 'layouts/navigation'%>
+        </div>
+          <div id="templatemo_main">
+          <%= render 'layouts/social_header'%>
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+            <div id="user_nav">
+              <% if user_signed_in? %>
+                <center>
+                
+                  <% if  current_user.uid.present? %>
+                    <%= image_tag "http://graph.facebook.com/#{current_user.uid}/picture?type=large" %> 
+                  <% else %>
+                    <%= image_tag current_user.photo.url(:small) %> 
+                  <% end %>
+
+                  <h2><%= current_user.email %>
+                  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+                <% else %>
+                  <%= link_to "Sign up", new_user_registration_path %> or
+                  <%= link_to "Sign in", new_user_session_path %>
+                   <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+                 </h2>
+                </center>
+              <% end %>
+            </div>
+
+            <div><h1><%= link_to 'Create Album', new_user_album_path(current_user) %></h1> </div>
+            <div> <h1><%= link_to 'All Users', user_index_path %></h1> </div>
+           
+              <%= yield %>
+           
+            <%= render 'layouts/footer'%>
+          </div> 
+      </div>
+  </body>
+</html>
