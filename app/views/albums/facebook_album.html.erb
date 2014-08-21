@@ -1,6 +1,6 @@
 <div id="gallery">
   <% @albums.each do |album| %> 
-  <div>
+  <div class="div-div">
     <h2><%= album['name'] %> </h2> </br>
     <ul id="grid"> 
       <% @graph.get_connections("#{album['id']}", 'photos').each do |photo| %>

@@ -212,3 +212,5 @@ div.grid_display h2 {
   font-size: 15px;
   color: #58595b;
   }
+
+  .div-div{display: block; float: left;}
