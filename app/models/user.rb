@@ -15,11 +15,10 @@ class User < ActiveRecord::Base
   acts_as_followable
   acts_as_follower 
 
-   has_many :albums 
+  has_many :albums 
 
-   def self.from_omniauth(auth)
-      where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
-     
+  def self.from_omniauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
@@ -30,10 +29,15 @@ class User < ActiveRecord::Base
     end
   end
 
-  # def singin_user
-    
-    
-  # end
+  def fetch_facebook_albums
+    @graph = self.get_graph_object
+    profile = @graph.get_object("me")
+    albums = @graph.get_connections("me", "albums") 
+    return albums 
+  end
 
+  def get_graph_object
+    Koala::Facebook::API.new(self.oauth_token)
+  end
 end 
- 
+  

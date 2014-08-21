@@ -6,5 +6,5 @@ class SessionController < ApplicationController
     sign_in user
     redirect_to root_url
   end
-end 
+end  
  

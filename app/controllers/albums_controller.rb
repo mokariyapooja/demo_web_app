@@ -29,18 +29,20 @@ class AlbumsController < ApplicationController
       end
   end
 
-  def private_value 
+  def facebook_album
+    @user = User.find(params[:user_id])
+    @graph = @user.get_graph_object
+    @albums = @user.fetch_facebook_albums
   end
 
-  # def destroy
-  #   @album = Album.find(params[:id])
-  #   @album.destroy
-  # end
+  def destroy
+    @album = Album.find(params[:id])
+    @album.destroy
+    redirect_to root_path
+  end      
 
   private
   def album_params   
     params.require(:album).permit(:name,:privacy,photos_attributes: [:id, :name, :_destroy,:data])
   end
 end
-
-

@@ -1,7 +1,7 @@
 class UserController < ApplicationController
   
   def index
-    @title = "User all"
+    @title = "User all" 
     @users = User.all
   end 
 
@@ -19,8 +19,6 @@ class UserController < ApplicationController
         redirect_to @user
         flash[:notice] = "You are now following ."
       end 
-    else
-      flash[:error] = "You must sing in first to follow."
     end
   end
 
@@ -30,8 +28,6 @@ class UserController < ApplicationController
       current_user.stop_following(@user)
       redirect_to @user
       flash[:notice] = "You are no longer following."
-    else
-      flash[:error] = "You must sing in first to unfollow."
     end
   end
 

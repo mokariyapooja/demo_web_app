@@ -3,8 +3,9 @@
   <% @albums.each do |album| %> 
     <h2> <li>
       <%= link_to album.name, user_album_path(current_user,album) %>
+            
     </li> </h2>
   <% end %> 
    <%= link_to 'Back', index_path %> 
 </ul>
-  
+   

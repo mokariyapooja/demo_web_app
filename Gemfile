@@ -1,12 +1,14 @@
 source 'https://rubygems.org'
 
+#for fetch data from facebook
+gem 'koala'
 #for connect to facebook
 gem 'omniauth-facebook'
 #for folow/unfolw user
 gem "acts_as_follower"
 #gem for image uplode
 gem 'paperclip'
-#gem for nested attributes
+#gem for nested attributes 
 gem "nested_form"
 #for registertion
 gem 'devise'

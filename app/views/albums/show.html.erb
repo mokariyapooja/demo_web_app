@@ -4,6 +4,9 @@
       <%=h @album.name %><br />
        <b>Privacy:</b>
           <%=h @album.privacy %><br />
+              <% if  current_user == @user %> 
+                <%= link_to "delete", @album_current_user, method: :delete, confirm: "You sure?" %>
+              <% end %>          
           <% @album.photos.each do |photo| %>
             <%= image_tag photo.data.url(:small) %>
           <% end %>

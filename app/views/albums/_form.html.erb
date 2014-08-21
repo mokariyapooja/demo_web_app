@@ -5,6 +5,7 @@
 
     <%= f.label :privacy %>
     <%= f.select(:privacy, Album::PRIVACY.collect {|p| [p,Album::PRIVACY.index(p)]}, :selected => @album.id) %> 
+
   <table id="photos">
     <%= f.fields_for :photos, :wrapper => false do |task_form| %>
       <tr class="fields">

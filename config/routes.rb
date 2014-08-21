@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+  Rails.application.routes.draw do
 
   devise_for :users
   devise_scope :user do 
@@ -10,12 +10,16 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   
   resources :user,only:[:index,:show] do
-   get 'following'
-   get 'followers'
-   post 'follow' 
-   delete 'unfollow'
-   resources :albums, only: [:index,:new,:create,:show]
- end 
+    get 'following'
+    get 'followers'
+    post 'follow' 
+    delete 'unfollow'
+    resources :albums, only: [:index,:new,:create,:show,:destroy] do
+      collection do 
+        get 'facebook_album'
+      end
+    end
+  end 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
