@@ -20,7 +20,6 @@
         <%= render 'layouts/navigation'%>
       </div>
         <div id="templatemo_main">
-        
           <p class="notice"><%= notice %></p>
           <p class="alert"><%= alert %></p>
             <div id="user_nav">
@@ -28,19 +27,29 @@
                 <center>          
                   <% if  current_user.uid.present? %>
                     <%= image_tag "http://graph.facebook.com/#{current_user.uid}/picture?type=large" %> 
-                  <% else %>
-                    <%= image_tag current_user.photo.url(:small) %> 
+                  <% else %> 
+                    <% if current_user.photo? %>                     
+                      <%= image_tag current_user.photo.url(:small) %> 
+                    <% else %>
+                      <%= image_tag "/assets/default.png"%>
+                    <% end %>
                   <% end %>
-
-                    <h2>
-                      <%= link_to current_user.email, user_path(current_user) %>
-                      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-                  
-                  <% else %>
-                      <%= link_to "Sign up", new_user_registration_path %> or
-                      <%= link_to "Sign in", new_user_session_path %>
-                      <%= link_to "Sign in with Facebook", "/auth/facebook" %>
-                    </h2>
+                 
+                    <p class="span123">
+                      <span><%= link_to current_user.email, user_path(current_user) %></span>
+                        <span>
+                          <% if  current_page?(index_path)%>                                      
+                          <% else %>  
+                            <%= link_to 'Home', index_path %>
+                          <% end %>
+                        </span>
+                      <span><%= link_to "Sign out", destroy_user_session_path, method: :delete %></span>
+                    </p>
+                    
+              <% else %>
+                <%= link_to "Sign up", new_user_registration_path %> or
+                <%= link_to "Sign in", new_user_session_path %>
+                <%= link_to "Sign in with Facebook", "/auth/facebook" %>      
                 </center>
               <% end %>
             </div>

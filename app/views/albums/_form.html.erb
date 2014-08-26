@@ -6,18 +6,17 @@
     <%= f.label :privacy %>
     <%= f.select(:privacy, Album::PRIVACY.collect {|p| [p,Album::PRIVACY.index(p)]}, :selected => @album.id) %> 
 
-  <table id="photos">
-    <%= f.fields_for :photos, :wrapper => false do |task_form| %>
-      <tr class="fields">
-          <td><%= task_form.label :data, "Photo" %></td>
-          <td><%= task_form.file_field :data %></td>
-          <td><%= task_form.link_to_remove "Remove this photo" %></td>
-      </tr>
-    <% end %>
-  </table>
-  <p><%= f.link_to_add "Add a photo", :photos %></p>
- <p>
-    <%= f.submit "submit" %>
-  </p></h1>
+      <table id="photos">
+        <%= f.fields_for :photos, :wrapper => false do |task_form| %>
+          <tr class="fields">
+            <td><%= task_form.label :data, "Photo" %></td>
+            <td><%= task_form.file_field :data %></td>
+            <td><%= task_form.link_to_remove "Remove this photo" %></td>
+          </tr>
+        <% end %>
+      </table>
+      <p><%= f.link_to_add "Add a photo", :photos %></p>
+     <p><%= f.submit "submit" %></p>
+  </h1>
 <% end %>
- 
+  

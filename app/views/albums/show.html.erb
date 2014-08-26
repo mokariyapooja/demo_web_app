@@ -1,15 +1,23 @@
 <h1>
-    <p>
-      <b>Name:</b>
-      <%=h @album.name %><br />
-       <b>Privacy:</b>
-          <%=h @album.privacy %><br />
-              <% if  current_user == @user %> 
-                <%= link_to "delete", @album_current_user, method: :delete, confirm: "You sure?" %>
-              <% end %>          
+  <p><div>
+    <b>Name:</b>
+    <%=h @album.name %><br />
+  </div></p>
+  <p><div>
+    <b>Privacy:</b>
+      <%=h @album.privacy_value %><br /></p>
+      <% if current_user.id == @album.user_id %> 
+        <p><%= link_to "delete album", @album_current_user, method: :delete, confirm: "You sure?" %></p>
+        <p><%= link_to "edit", edit_user_album_path  %></p>
+      <% end %>
+      </div>          
+      <div id="gallery">  
+        <ul id="grid">
           <% @album.photos.each do |photo| %>
             <%= image_tag photo.data.url(:small) %>
+            <%= link_to "delete photo", user_album_delete_photo_path(current_user,@album,photo.id), method: :delete, confirm: "You sure?" %>
           <% end %>
-    </p>
-  <%= link_to 'Back', index_path %>
+        </ul>
+      </div>
+    <%= link_to 'Back', user_path(current_user) %>
 </h1>  

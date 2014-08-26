@@ -1,11 +1,10 @@
 <h1><%= @title %></h1>
 <ul>
   <% @albums.each do |album| %> 
-    <h2> <li>
-      <%= link_to album.name, user_album_path(current_user,album) %>
-            
+    <h2><li>
+      <%= link_to album.name, user_album_path(current_user,album) %>     
     </li> </h2>
   <% end %> 
-   <%= link_to 'Back', index_path %> 
+  <h1><%= link_to 'Back', user_path(current_user) %></h1>
 </ul>
    

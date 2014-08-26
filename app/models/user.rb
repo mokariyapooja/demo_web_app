@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   # #validations
   validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
+  #method follow & unfollow
   acts_as_followable
   acts_as_follower 
 
@@ -29,6 +30,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  #fetch albums from user's facebook
   def fetch_facebook_albums
     @graph = self.get_graph_object
     profile = @graph.get_object("me")
@@ -38,6 +40,15 @@ class User < ActiveRecord::Base
 
   def get_graph_object
     Koala::Facebook::API.new(self.oauth_token)
+  end
+
+  #search user from list 
+  def self.search(search)
+    if search 
+      User.where('email LIKE  ? ', search)
+    else
+      User.all
+    end
   end
 end 
   

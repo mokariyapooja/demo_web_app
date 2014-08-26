@@ -1,0 +1,6 @@
+<%= form_tag user_search_path(current_user), :method => 'post' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :email => nil %>
+  </p>
+<% end %>

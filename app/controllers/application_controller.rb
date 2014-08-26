@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  rescue_from ActiveRecord::RecordNotFound, :with => :render_404
+  rescue_from ActionController::RoutingError, :with => :render_404
 
   def after_sign_in_path_for(resource) 
    index_path
@@ -15,6 +17,14 @@ class ApplicationController < ActionController::Base
     root_path
   end
   
+
+  def  render_404(exception = nil)
+    if exception
+      logger.info "Rendering 404: #{exception.message}"
+    end
+    render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false
+  end
+
   protected
   def layout_by_resource
     if devise_controller?

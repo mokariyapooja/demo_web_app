@@ -214,3 +214,12 @@ div.grid_display h2 {
   }
 
   .div-div{display: block; float: left;}
+
+  .span123{padding-top: 20px;}
+  .span123 span {
+    font-size: 20px;
+    line-height: 16px;
+    padding: 10px;
+
+  } 
+  

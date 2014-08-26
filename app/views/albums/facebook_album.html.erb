@@ -1,16 +1,13 @@
 <div id="gallery">
   <% @albums.each do |album| %> 
-  <div class="div-div">
-    <h2><%= album['name'] %> </h2> </br>
-    <ul id="grid"> 
-      <% @graph.get_connections("#{album['id']}", 'photos').each do |photo| %>
-        <li>
-          <%= image_tag photo['source']  %> 
-        </li> 
-      <% end %>
-  </ul>
-  </br>
-  </div>
-<% end %> 
+    <div class="div-div">
+      <h2><%= album['name'] %> </h2> </br>
+      <ul id="grid"> 
+        <% @graph.get_connections("#{album['id']}", 'photos').each do |photo| %>
+          <li><%= image_tag photo['source']%></li> 
+        <% end %>
+      </ul></br>
+    </div>
+  <% end %> 
 </div>
-<%= link_to 'Back', index_path %> 
+<h1><%= link_to 'Back', index_path %></h1>

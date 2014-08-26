@@ -14,13 +14,18 @@
     get 'followers'
     post 'follow' 
     delete 'unfollow'
-    resources :albums, only: [:index,:new,:create,:show,:destroy] do
+    post 'search'   
+
+    resources :albums, only: [:index,:new,:create,:update,:edit,:show,:destroy] do
+      match '/delete_photo/:photo_id', to: 'albums#delete_photo', via: :delete , as: 'delete_photo'
       collection do 
         get 'facebook_album'
       end
     end
   end 
-
+  
+  #match '*path', via: :all, to: 'pages#error_404'
+ 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -75,4 +80,7 @@
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+ match '*path', :to => 'application#render_404', via: :get
+
 end

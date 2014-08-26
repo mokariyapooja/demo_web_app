@@ -1,8 +1,12 @@
 <h1><%= @title %> </h1>
+<%= render 'user/search_form'%>
+ 
 <ul>
   <% @users.each do |user| %> 
     <h2> <li><%= link_to user.email, user %> </li> </h2>
   <% end %> 
-    <%= link_to 'Back', index_path %>
 </ul>
+  
+ <h1> <%= link_to 'Back', user_path(current_user) %> </h1>
+ </ul>
  

@@ -2,13 +2,20 @@ class UserController < ApplicationController
   
   def index
     @title = "User all" 
-    @users = User.all
+    @users = User.all 
   end 
 
   def show
     @user = User.find(params[:id])   
   end
 
+  #to search user from list
+  def search
+    @users = User.search(params[:search])
+    render 'index'
+  end
+
+  #to follow user
   def follow
     @user = User.find(params[:user_id])
     if current_user
@@ -22,6 +29,7 @@ class UserController < ApplicationController
     end
   end
 
+  #to unfollow user
   def unfollow
     @user = User.find(params[:user_id])
     if current_user
@@ -31,6 +39,7 @@ class UserController < ApplicationController
     end
   end
 
+  #list of following users
   def following
     @title = "Following"
     @user = User.find(params[:user_id])
@@ -38,6 +47,7 @@ class UserController < ApplicationController
     render 'index'
   end
 
+  #list of follower users
   def followers
     @title = "Followers"
     @user = User.find(params[:user_id])
@@ -45,4 +55,3 @@ class UserController < ApplicationController
     render 'index'
   end
 end
- 
