@@ -31,7 +31,7 @@
                     <% if current_user.photo? %>                     
                       <%= image_tag current_user.photo.url(:small) %> 
                     <% else %>
-                      <%= image_tag "/assets/default.png"%>
+                      <%= image_tag 'default.png'%>
                     <% end %>
                   <% end %>
                  
